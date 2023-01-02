@@ -1,5 +1,10 @@
 import React, {Component} from 'react';
 import {Text, View, Image, TouchableOpacity} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+const Stack = createNativeStackNavigator();
+
+import Home from './src/layout/Home';
 
 class App extends Component {
   constructor(props) {
@@ -8,9 +13,13 @@ class App extends Component {
   }
   render() {
     return (
-      <View>
-        <Text>Ini text</Text>
-      </View>
+      <NavigationContainer>
+        <Stack.Navigator
+          initialRouteName="Home"
+          screenOptions={{headerShown: false}}>
+          <Stack.Screen name="Home" component={Home} />
+        </Stack.Navigator>
+      </NavigationContainer>
     );
   }
 }
